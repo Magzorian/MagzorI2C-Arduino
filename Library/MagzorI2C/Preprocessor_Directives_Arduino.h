@@ -34,7 +34,8 @@
 #include <avr/pgmspace.h>
 #define DECLARE_FLASH_ARRAY const PROGMEM
 #else
-#error Unsupported DECLARE_FLASH_ARRAY for Arduino Preprocessor Directive
+#define DECLARE_FLASH_ARRAY static const
+//#error Unsupported DECLARE_FLASH_ARRAY for Arduino Preprocessor Directive
 #endif
 
 
@@ -43,7 +44,8 @@
 #include <avr/pgmspace.h>
 #define GET_FLASH_BYTE(a,i) pgm_read_word_near (&a[i])
 #else
-#error Unsupported GET_FLASH_BYTE(a,i) for Arduino Preprocessor Directive
+#define GET_FLASH_BYTE(a,i) (a[i])
+//#error Unsupported GET_FLASH_BYTE(a,i) for Arduino Preprocessor Directive
 #endif
 
 
